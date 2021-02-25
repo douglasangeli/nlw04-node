@@ -22,9 +22,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v1      
       with:
         node-version: ${{ matrix.node-version }}    
-        working-directory: ./api
-    - run: yarn install
-    - run: yarn test
+    - name: Install packages
+      working-directory: ./api
+      run: yarn install
+    - name: Run jest tests
+      working-directory: ./api
+      run: yarn test
