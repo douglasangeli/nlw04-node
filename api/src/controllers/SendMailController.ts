@@ -9,7 +9,7 @@ import { SurveyUser } from '../models/SurveyUser';
 import { AppError } from '../errors/AppError';
 
 export class SendMailController {
-    async execute(request: Request, response: Response) {
+    async execute(request: Request, response: Response<SurveyUser>): Promise<Response<SurveyUser>> {
         const { email, survey_id } = request.body;
 
         const usersRepository = getCustomRepository(UsersRepository);

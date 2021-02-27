@@ -1,0 +1,3 @@
+dist # Isso depende de como o tsconfig.json está configurado em compilerOptions.outDir
+scripts
+node_modules

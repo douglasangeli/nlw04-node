@@ -2,13 +2,14 @@ import { Request, Response } from 'express';
 import { getCustomRepository } from 'typeorm';
 import * as yup from 'yup';
 import { AppError } from '../errors/AppError';
+import { User } from '../models/User';
 
 import { UsersRepository } from '../repositories/UsersRepository';
 
 export class UserController {
 
     //POST
-    async create(request: Request, response: Response) {
+    async create(request: Request, response: Response<User>): Promise<Response<User>> {
 
         const schema = yup.object().shape({
             name: yup.string().required(),

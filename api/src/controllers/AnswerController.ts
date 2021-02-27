@@ -1,10 +1,11 @@
 import { Request, Response } from 'express';
 import { getCustomRepository } from 'typeorm';
 import { AppError } from '../errors/AppError';
+import { SurveyUser } from '../models/SurveyUser';
 import { SurveysUsersRepository } from '../repositories/SurveysUsersRepository';
 
 export class AnswerController {
-    async execute(request: Request, response: Response) {
+    async execute(request: Request, response: Response<SurveyUser>): Promise<Response<SurveyUser>> {
         const { surveyUserId } = request.params;
         const { value } = request.query;
 
